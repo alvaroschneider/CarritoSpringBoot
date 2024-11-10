@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Spring Boot Web Page</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    </head>
+<body>
+    <div class="container">
+        <h1>Editar Producto</h1>
+        
+        <form th:action="@{/api/products/{id}/edit(id=${product.id})}" method="post">
+            <input type="hidden" name="_method" value="put"></input>
+            <div class="form-group">
+                <label for="name">Nombre del producto:</label>
+                <input type="text" class="form-control" id="name" name="name" th:field="*{product.name}"></input>
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Descripción:</label>
+                <textarea class="form-control" id="description" name="description" th:field="*{product.description}"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="price">Precio:</label>
+                <input type="number" class="form-control" id="price" name="price" step="0.01" th:field="*{product.price}"></input>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+    
+    <!-- Agregar enlaces a los archivos JavaScript de Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
